@@ -27,9 +27,9 @@ const fixture = MAT.paint({color:[.078,.12,.152],roughness:.52});
 const word = matchMedia("(max-width: 760px)").matches;
 const lab = new Lab({
   prompt:"分拣工位 · 双作用气缸的两个受力面",
-  pills:["交互仿真","施工台模型"],no:32,
+  pills:["交互仿真","实训台模型"],no:32,
   title:"一只气缸，两种力",sub:"活塞杆怎样改变受力面积",
-  view:{az:26,el:20,dist:word?3.8:2.66,target:[.014,word?.033:.077,0],frameX:word?0:-.17,fov:34},
+  view:{az:26,el:20,dist:word?5.05:2.66,target:[.014,word?-.118:.077,0],frameX:word?0:-.17,fov:34},
   cut:{a:[0,0,1],b:[0,1,0],center:[0,axis,0],reach:.30},
   size:.32
 });
@@ -168,6 +168,9 @@ const entrance=document.createElement("a");
 entrance.className="machine-home";entrance.href="../index.html";entrance.textContent="‹ 科普动画实测";
 if(!lab.filmMode) document.body.append(entrance);
 lab.start();
+if (!lab.filmMode && (word || matchMedia("(prefers-reduced-motion: reduce)").matches)) lab._assembly=0;
+const syncButtons=lab._syncButtons.bind(lab);
+lab._syncButtons=()=>{syncButtons(); lab.$('button[data-k="run"]').firstChild.textContent=lab.paused?"播放":"暂停";};
 const localized={run:"暂停",explode:"爆炸",cut:"剖切",xray:"透视",slow:"慢放",labels:"零件标签"};
 for(const [key,label] of Object.entries(localized)) {
   const button=lab.$(`button[data-k="${key}"]`);
