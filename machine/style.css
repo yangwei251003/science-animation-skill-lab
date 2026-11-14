@@ -1,0 +1,31 @@
+
+:root{--paper:#f3f2ee;--ink:#18262a}
+body .lab-side{width:clamp(245px,25.5vw,440px)}
+body .lab-title{font-family:"Noto Serif SC","Songti SC","SimSun",serif;font-weight:800;font-size:clamp(29px,3.15vw,62px);line-height:1.12}
+body .lab-title i{font-family:system-ui,"Microsoft YaHei",sans-serif;font-size:.38em;line-height:1.5;font-style:normal;font-weight:600;margin-top:8px;color:#52676d}
+body .lab-big{font-family:Georgia,serif;color:#0e3a42}
+body .lab-bar > div{background:#258796}
+body .lab-bar.bad > div{background:#ca461c}
+body .lab-side,.lab-modes,.lab-how{font-family:system-ui,"Microsoft YaHei",sans-serif}
+body .lab-prompt{left:4.2vw;top:6.5vh;color:#244951;background:#dbe4e2;max-width:none;font-weight:650;padding:8px 13px;position:absolute}
+body .lab-pills{color:#2e535a}
+body .lab-pills span::before{background:#258796}
+body .lab-controls input:focus-visible,body button:focus-visible,body a:focus-visible{outline:2px solid #258796;outline-offset:3px}
+body .lab-direction{display:flex;flex-wrap:wrap;gap:6px;margin-top:13px}
+body .lab-direction button{background:transparent;color:#294b52;border:1px solid #bcc9c9;border-radius:6px;padding:6px 9px;font:600 12px system-ui;cursor:pointer}
+body .lab-direction button[aria-pressed=true]{background:#1b5d66;border-color:#1b5d66;color:#fff}
+.machine-home{position:fixed;top:3vh;left:4.2vw;z-index:4;color:#31565d;text-decoration:none;font:650 12px system-ui;pointer-events:auto}
+.lab-how .body a{color:#285e61}
+body .lab-mode button{border-color:#adb9b9}
+@media(max-width:760px){
+ body .lab-side{width:auto;bottom:128px;left:15px;right:15px}
+ body .lab-title{font-size:30px}
+ body .lab-prompt{top:43px;left:15px;right:auto}
+ body .lab-no{display:none}
+ body .lab-metric{margin-top:12px}
+ body .lab-ctl{margin-top:7px}
+ body .lab-big{font-size:54px}
+ body .lab-modes{bottom:16px;left:15px;right:15px}
+ body .lab-direction{margin-top:7px}
+ .machine-home{top:15px;left:15px}
+}

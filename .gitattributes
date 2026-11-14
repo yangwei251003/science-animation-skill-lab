@@ -1,0 +1,9 @@
+* text=auto eol=lf
+factory/index.html linguist-generated -whitespace
+machine/index.html linguist-generated -whitespace
+teardown/index.html linguist-generated -whitespace
+anatomy/index.html linguist-generated
+anatomy/light.html linguist-generated
+anima/index.html linguist-generated
+anima/light.html linguist-generated
+seecode/index.html linguist-generated

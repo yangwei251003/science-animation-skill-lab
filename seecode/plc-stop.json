@@ -1,0 +1,96 @@
+{
+  "type": "flowchart",
+  "dir": "TB",
+  "title": "停机优先",
+  "subtitle": "一轮 PLC 扫描怎样决定输送带是否继续运行",
+  "eyebrow": "PLC 启停控制",
+  "caption": "停止信号有效时清除运行位。启动释放后保留运行位，停机后须再次启动。",
+  "lang": "zh-CN",
+  "fonts": "system",
+  "motion": "trace",
+  "skin": "light",
+  "size": "wide",
+  "out": "index.html",
+  "legend": false,
+  "nodes": [
+    {
+      "id": "read",
+      "label": "采样按钮",
+      "sub": "读启动、停止与上一轮运行位",
+      "shape": "terminal",
+      "kind": "input",
+      "row": 0,
+      "col": 1
+    },
+    {
+      "id": "stop",
+      "label": "停止有效？",
+      "shape": "decision",
+      "focal": true,
+      "row": 1,
+      "col": 1
+    },
+    {
+      "id": "off",
+      "label": "写入停止",
+      "sub": "RUN = 0 · 电机输出断开",
+      "shape": "terminal",
+      "kind": "security",
+      "row": 1,
+      "col": 2
+    },
+    {
+      "id": "start",
+      "label": "启动有效？",
+      "shape": "decision",
+      "row": 2,
+      "col": 1
+    },
+    {
+      "id": "keep",
+      "label": "保留上一轮",
+      "sub": "保持 RUN，停止时也不会自启",
+      "shape": "terminal",
+      "kind": "optional",
+      "row": 2,
+      "col": 0
+    },
+    {
+      "id": "on",
+      "label": "写入运行",
+      "sub": "RUN = 1 · 使能电机输出",
+      "shape": "terminal",
+      "row": 3,
+      "col": 1
+    }
+  ],
+  "edges": [
+    [
+      "read",
+      "stop",
+      "读取",
+      "primary"
+    ],
+    [
+      "stop",
+      "off",
+      "是",
+      "primary"
+    ],
+    [
+      "stop",
+      "start",
+      "否"
+    ],
+    [
+      "start",
+      "keep",
+      "否"
+    ],
+    [
+      "start",
+      "on",
+      "是"
+    ]
+  ]
+}
